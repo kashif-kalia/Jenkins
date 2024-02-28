@@ -1,0 +1,147 @@
+                      E-Mail Integration
+
+1) Email Integration with Jenkins and Plugin Setup
+  1) "Email Extension Template" install this plugin
+  
+  2) Go to gmail-> profile -> Manage Google account -> security tab
+     -> 2-step verification -> search "app password" in search bar & click on it
+  3) Now  give Parameter , create and copy password.
+  
+  4) On Jenkins Set Credential:-
+     Manage Jenkins -> credentials -> Global then fullfill the fields
+     kind-- username and password
+     username-- k@gmail.com :-from which mail you want to send mail 
+     password-- Copy that passowrd here created on gmail.
+     ID -- mail or anything 
+     Description -- mail or anything
+  
+  5) On Jenkins-Configure SMTP Server:-
+     Go to  Manage Jenkins -> system
+     E-mail Notification
+     SMTP server -- smtp.gmail.com 
+     Click on Advanced
+     Tick on Use SMTP Authentication
+     User Name-- k@gmail.com
+     Password -- copy that password here
+     Tick on SSL Box
+     SMTP port -- 465
+     Click on Save
+    
+  6) On Jenkins 
+     Go to Manage Jenkins -> System
+     Extended E-mail Notification
+     SMTP server -- smtp.gmail.com
+     SMTP port -- 465
+     Click on Advanced
+     Select predefined credetials
+     Tick on SSL checkbox
+     select "DefaultContent type"--HTML
+     click on Default Triggers and Tick on "Always checkbox" 
+     Click on Save
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------  
+                         Java-Installation
+  
+  2) Java Integration with Jenkins or any tool Like NodeJS and Plugin Set up  
+    1) "Eclipse Temurin Installer" Install this Plugin for Java
+
+    2) On Jenkins 
+       Go to Manage jenkins -> Tools
+       JDK Installation
+       Name -- jdk17
+       Click on install automatically and select "install from adoptium.net" and select version.
+       And Save.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                 SonarQube
+
+  3) SonarQube Integration with Jenkins and Plugin Set up
+    1) "SonarQubeScanner" install this Plugin.  
+     
+    2) Go to SonarQube Dashboard
+       Click "Administration" -> Security -> user
+       Under option Tokens select on update Tokens 
+       Create Tokens and copy that Tokens
+       
+    3) On Jenkins -- Create Credential for SonarQube
+       Manage Jenkins -> credentials -> Global then fullfill the fields           
+       Kind -- Secret Text
+       Secret -- Copy that sonarqube token
+       ID -- SonarQube-token
+       Description -- SonarQube-token 
+        
+    4) On Jenkins
+       Go to Manage Jenkins -> System 
+       SonarQube Installation
+       Click on "Add SonarQube"
+       Name -- sonar-server
+       Server Url -- IP and Port no of sonarqube server	http://44.201.254.146:9000
+       click on "server authentication token" and select the added token.
+       click on save.
+      
+    5) On Jenkins - For Global tool Configuration
+       Go to Manage Jenkins -> Tools
+       SonarQube Scanner Installations
+       Name -- sonar-scanner
+       click on install automatically and select version 
+       save.
+
+   6) On SonarQube Dashboard Add Quality Gate Or Webhooks
+      Go to Administration -> Configuration -> webhooks
+      There is a option Craete -> click on Create and ADD
+      Name -- Jenkins
+      URL -- http:// jenkins-server-IP:8080/sonarqube-webhook/
+      and save. 
+ 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+               OWASP Dependency Check Plugin For check dependency and vulnerability of code.
+  
+    4) Install OWASP Dependency Check Plugin on Jenkins
+      1) On Jenkins Go to Dashboard -> Manage Jenkins -> Plugins-- 
+       -> OWASP Dependency-Check and Click on install
+
+     2) Go to Dashboard -> Manage Jenkins -> Tools
+        Click on Dependency-Check
+        Name -- dp-check
+        Click on install automatically 
+        Select "Install from github.com"
+        and Select the version  and click on save.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------   
+                    Docker-Hub
+  
+     5) Install Docker tool on Jenkins
+      1) On Jenkins Go to Dashboard -> Manage jenkins -> Available Plugin --
+         ->  search for Docker -> click on install.
+   
+     2) On Jenkins Go to Dashboard -> Manage Jenkins -> Tools
+        Click On Docket Installation
+        name -- docker
+        Click on Install automatically
+        Selecct "Download from docker.com"
+        click on Save.
+    
+     2) ADD Dockerhub Username and Password under Global Credential
+        Kind -- username with password
+        username -- username of docker-hub
+        password -- password of docker-hub
+        ID -- docker
+        Descrition -- docker
+        Click on Create. 	 
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+                      Kubernates
+    
+      6) TO install Kubernates tool on Jenkins.
+        1) Install these Plugin on Jenkins :-
+           "Kubernates Credential, Kubernates Client API, Kubernates,Kubernate CLI".
+         
+        2) On Jnekins Go to Dashboared -> Manage Jenkins -> Credentials -> System --
+           --> Global Credentials.
+          Kind -- Secret file
+          File -- Uploads previously saved file which contain kubconfig content
+          ID -- K8s
+          Description -- K8s
+          Click on Save.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
